@@ -15,9 +15,9 @@ function doRequest () {
     .end();
 }
 
-function doHash() {
+function doHash(id) {
   crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
-    console.log('Hash:', Date.now() - start);
+    console.log(`Hash ${id}:`, Date.now() - start);
   });
 }
 
@@ -27,7 +27,7 @@ fs.readFile('multitask.js', 'utf8', () => {
   console.log('FS:', Date.now() - start);
 })
 
-doHash();
-doHash();
-doHash();
-doHash();
+doHash(1);
+doHash(2);
+doHash(3);
+doHash(4);
